@@ -18,7 +18,7 @@ python3 ./preact.py --help
 ```
 In the Backblaze dataset, there are totally 7 makes / models. To run with all of them, you can use the following command.
 ```bash
-python3 ./preact.py --method date -c bb -m ST4000DM000 -m ST8000DM002 -m "HGST HMS5C4040ALE640" -m "HGST HMS5C4040BLE640" -m ST8000NM0055 -m ST12000NM0007 -m "HGST HUH721212ALN604" -c bb --multi_phase
+python3 ./preact.py --method date -c bb -m ST4000DM000 -m ST8000DM002 -m "HGST HMS5C4040ALE640" -m "HGST HMS5C4040BLE640" -m ST8000NM0055 -m ST12000NM0007 -m "HGST HUH721212ALN604" --multi_phase
 ```
 Note that running with all makes / models from the Backblaze dataset will require at least 12-ish minutes. A progress bar will show up to show the progress of PREACT.
 At the end of each run, the results (including the plots) are collected in the results folder. 
