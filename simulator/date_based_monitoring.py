@@ -40,9 +40,9 @@ def monitor_by_date(dgroups, dataset):
     all_disks_deployment_dates = dataset.get_all_deployment_dates(dgroups=all_dgroups)
     deployment_batches = {}
     disk_map = dataset.get_disks_in_memory(dgroups=all_dgroups)
+    startdate = all_disks_deployment_dates[0]
     print("dataset loaded!")
     print("----------------------------------------")
-    startdate = all_disks_deployment_dates[0]
     enddate = constants.END_DATE
     dt_range = common.daterange(datetime.datetime.strptime(startdate, "%Y-%m-%d"),
                                 datetime.datetime.strptime(enddate, "%Y-%m-%d"))
@@ -375,6 +375,8 @@ def monitor_by_date(dgroups, dataset):
 
 def plot_date_wise_io(dataset):
     today = datetime.datetime.today().strftime('%Y-%m-%d')
+    os.makedirs("results/plots", exist_ok=True)
+
     # os.makedirs("results/" + today + "/date_wise/" + common.cluster +
     #             "/plots/" + str(constants.REDUCED_USEFUL_LIFE_AGE), exist_ok=True)
 

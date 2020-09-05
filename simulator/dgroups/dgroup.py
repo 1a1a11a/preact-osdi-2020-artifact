@@ -655,7 +655,7 @@ class DGroup:
                    loc='upper left')
         plt.ylabel("AFR (%)", fontsize=14)
         plt.tight_layout()
-        fig.savefig(common.results_dir + "/" + self.name + ".pdf", pad_inches=0)
+        fig.savefig(common.results_dir + "/plots/" + self.name + ".pdf", pad_inches=0)
         return fig, axarr
 
     def plot_age_afr(self, folder, revision_number=1, fig=None, axarr=None):
@@ -676,5 +676,5 @@ class DGroup:
                  'k', label='AFR', lw=1)
         plt.ylabel("AFR (%)")
         plt.tight_layout()
-        fig.savefig("results/" + self.name + ".pdf", pad_inches=0)
+        fig.savefig("results/plots/" + self.name + ".pdf", pad_inches=0)
         return fig, axarr
