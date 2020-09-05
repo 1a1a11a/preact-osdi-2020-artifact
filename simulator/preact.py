@@ -22,7 +22,6 @@ sys.path.append("datasets")
 sys.path.append("dgroups")
 from dgroups import DGroup
 from datasets import Backblaze
-from datasets import Google
 import datetime
 
 matplotlib.rcParams.update({'font.size': 14})
