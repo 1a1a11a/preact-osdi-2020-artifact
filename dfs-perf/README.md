@@ -1,5 +1,5 @@
 # DFS-perf experiment for evaluating HDFS + PREACT
-_**PREREQUISITE: the HDFS cluster should be setup on Cloudlab before running DFS-perf. If you haven't setup the HDFS cluster, please refer to the README in the `hdfs` folder**_
+_**PREREQUISITE: the HDFS cluster should be setup on Cloudlab before running DFS-perf. If you haven't setup the HDFS cluster, please refer to the [README](../hdfs/README.md) in the `hdfs` folder**_
 
 
 ## Overview of running dfs-perf

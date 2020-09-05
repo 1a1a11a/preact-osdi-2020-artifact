@@ -17,4 +17,8 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
+<property>
+  <name>fs.defaultFS</name>
+    <value>hdfs://node0.saukad-qv79471.redundancy-pg0.apt.emulab.net:9000</value>
+</property>
 </configuration>
