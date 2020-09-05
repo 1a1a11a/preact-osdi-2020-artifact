@@ -36,4 +36,4 @@ At this point the HDFS cluster should be setup on node0 through node20. node0 is
 If the cluster is setup correctly, you should see the output as `Live datanodes (20):`
 
 ## DFS-perf configuration
-Once the HDFS cluster has been setup, please refer to the README in the dfs-perf folder to run the workload and generate the evaluation numbers.
+Once the HDFS cluster has been setup, please refer to the [README](../dfs-perf/README.md) in the dfs-perf folder to run the workload and generate the evaluation numbers.
