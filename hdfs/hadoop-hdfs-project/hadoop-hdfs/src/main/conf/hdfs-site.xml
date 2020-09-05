@@ -20,19 +20,19 @@
 
     <property>
         <name>heart.redundancy.schemes.list</name>
-        <value>RS-LEGACY-6-3-1024k,RS-LEGACY-2-2-1024k</value>
+        <value>RS-LEGACY-6-3-1024k,RS-LEGACY-7-3-1024k</value>
         <description>All the schemes that are being used in the cluster at this point.</description>
     </property>
 
     <property>
         -<name>heart.disk.groups.list</name>
-        <value>RS-LEGACY-6-3-1024k,RS-LEGACY-2-2-1024k</value>
+        <value>RS-LEGACY-6-3-1024k,RS-LEGACY-7-3-1024k</value>
         <description>All the disk-groups that are being used in the cluster at this point.</description>
     </property>
 
     <property>
         <name>fs.defaultFS</name>
-        <value>hdfs://h0.placement.HeARTy:9000</value>
+        <value>hdfs://node0.saukad-qv79471.redundancy-pg0.apt.emulab.net:9000</value>
     </property>
 
 </configuration>
