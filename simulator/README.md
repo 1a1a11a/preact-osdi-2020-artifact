@@ -1,9 +1,11 @@
-# PREACT
+# The PREACT simulator
 The main results of PREACT are evaluated using a Python framework that simulates the tailoring of data redundancy to the reliability levels of the underlying 
 disk layer without compromising target data reliability. Read reference for more details.
 
+
 ## System Requirements
 - Any Ubuntu distribution >= 16.04 with access to internet to install packages using `apt-get`.
+
 
 ## Dependencies
 PREACT depends on several Python packages (which also include the packages it uses for anomaly and change-point 
