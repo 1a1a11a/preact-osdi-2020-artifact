@@ -7,7 +7,7 @@ PREACT depends on several Python packages (which also include the packages it us
 detection: read reference for detail). Use the pip3 package manager to install all required dependencies.
 ```bash
 sudo apt-get install python3 python3-pip
-pip3 install numpy scipy pandas statsmodels matplotlib boto3 rrcf ruptures pyarrow tqdm
+pip3 install numpy scipy pandas statsmodels matplotlib boto3 rrcf ruptures pyarrow tqdm dataclasses
 ```
 
 ## Usage
