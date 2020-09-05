@@ -4,4 +4,4 @@ There are two artifacts for the PREACT submission in OSDI 2020:
 2. We also have a PREACT-enabled HDFS to show that it is easy to incorporate PREACT in an actual distributed file system. The HDFS code is in the `hdfs` folder. The dfs-perf evaluation has to be performed once the HDFS cluster has been setup (refer the HDFS README).
 
 ## Contact
-Please contact saukad@cs.cmu.edu for any questions regarding this code.
+Please contact saukad@cs.cmu.edu for any questions regarding this code or setup.
