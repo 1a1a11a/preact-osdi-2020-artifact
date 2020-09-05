@@ -1,0 +1,69 @@
+README
+
+========== 0. INTRODUCTION
+
+BeatLex is software for summarizing and forecasting time series data containing patterns. 
+
+BeatLex consists of 3 main functions:
+
+- summarize_seq: for summarizing a sequence 
+- forecast_seq: for forecasting
+- tune_hyperparams: used to select algorithm hyperparameters (Smin, Smax, maxdist).
+
+========== 1. GETTING STARTED
+
+The easiest way to get started is to simply run "main_ecg_example" and "main_mocap_example". These run forecast_seq and summarize_seq on an example ECG or motion capture time series (on example data included in this package), and generates plots in the plots/ directory of this package. 
+
+These scripts also show examples of how to use tune_hyperparams, but provide pre-chosen parameters for convenience.
+
+========== 2. FUNCTION REFERENCE: INPUT/OUTPUT
+
+---------- (a) summarize_seq
+This function summarizes the given time series (i.e. learning a segmentation, vocabulary terms, and an assignment of which vocabulary term should be used to describe each segment).
+
+Input: 
+X (a d by m time series), where d is the dimensionality and m is length
+Smin (min segment length)
+Smax (max segment length)
+maxdist (max warping distance, i.e. Sakoe Chiba band width)
+verbose (verbosity level: 0 for low and 1 for high)
+
+Output: 
+models (a list of vocabulary terms)
+starts (starts of each segment)
+ends (ends of each segment)
+idx (index of vocabulary term assigned to each segment)
+best_prefix_length (can usually be ignored; this indicates the partial matching of a vocabulary term at the end of the data)
+tot_err (total error in terms of description length)
+
+---------- (b) forecast_seq
+This function forecasts data. Note that it does this by first running summarize_seq, so a lot of the output it returns mirrors those of summarize_seq. 
+
+Input: 
+X (a d x m time series), where d is the dimensionality and m is length
+pred_len (number of time ticks to predict)
+Smin (min segment length)
+Smax (max segment length)
+maxdist (max warping distance, i.e. Sakoe Chiba band width)
+verbose (verbosity level: 0 for low and 1 for high)
+
+Output: 
+Xp (forecasted time series of size d x pred_len)
+idx (index of vocabulary term assigned to each segment)
+starts (starts of each segment)
+ends (ends of each segment)
+p_idx (same as idx, but corresponding to the forecasted region)
+p_starts (same as starts, but corresponding to the forecasted region)
+p_ends (same as ends, but corresponding to the forecasted region)
+models (a list of vocabulary terms)
+
+---------- (c) tune_hyperparams
+This function uses grid search to tune Smin, Smax and maxdist based on minimizing the description length criterion. 
+
+Input: 
+X (a d x m time series), where d is the dimensionality and m is length
+
+Output: 
+best_Smin (tuned value of Smin, i.e. min segment length)
+best_Smax (tuned value of Smax, i.e. max segment length)
+best_maxdist (tuned value of maxdist, i.e. Sakoe-Chiba band width)

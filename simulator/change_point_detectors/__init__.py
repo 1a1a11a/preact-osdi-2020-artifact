@@ -1,0 +1,8 @@
+#!/usr/local/bin/python3
+
+from change_point_detectors.detector import Detector
+# from change_point_detectors.implementations.beatlex.beatlex import Beatlex
+from change_point_detectors.implementations.ruptures.ruptures import Ruptures
+from change_point_detectors.implementations.deterministic_sliding_window import DeterministicSlidingWindow
+from change_point_detectors.implementations.changepy.changepy import ChangePy
+from change_point_detectors.implementations.francisco.francisco import Francisco
