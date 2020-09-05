@@ -15,7 +15,7 @@ sudo apt-get install python3 python3-pip
 pip3 install numpy scipy pandas statsmodels matplotlib boto3 rrcf ruptures pyarrow tqdm dataclasses
 ```
 
-## Usage
+## Running the simulator
 There are several mandatory and optional flags for running PREACT. The best way to learn about all the flags is to run 
 the following command.
 ```bash
@@ -27,6 +27,8 @@ python3 ./preact.py --method date -c bb -m ST4000DM000 -m ST8000DM002 -m "HGST H
 ```
 Note that running with all makes / models from the Backblaze dataset will require at least 12-ish minutes. A progress bar will show up to show the progress of PREACT.
 At the end of each run, the results (including the plots) are collected in the results folder.
+
+**Known issue: there might be Python runtime warning that get generated when the simulator is running. Those can safely be ignored for this experiment.**
 
 
 ## Confirming results reproducibility
