@@ -14,7 +14,7 @@ sudo apt-get update \
 
 sudo apt-get -y install pdsh
 sudo apt-get -y install libsnappy-dev
-sudo apt-get -y python3 python3-pip
+sudo apt-get -y install python3 python3-pip
 pip3 install matplotlib numpy pandas
 
 sudo echo "ssh" > /etc/pdsh/rcmd_default
