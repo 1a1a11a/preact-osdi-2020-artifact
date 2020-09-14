@@ -17,7 +17,7 @@ Once the experiment has been instantiated, you can login into node0 and clone th
 ## Setting up the Cloudlab experiment
 There are several steps involved in setting up the HDFS cluster to evaluate our experiment.
 1. `cd hdfs` in our current repository
-2. `cp ssh_config ~/.ssh_config`
+2. First backup your ssh config if it exists (it should be in ~/.ssh/config). Copy our ssh config to your ssh profile: `cp ssh_config ~/.ssh/config`
 3. You will need to change a few files to reflect the parameters based on the experiment that was launched. Each node launched in the Cloudlab experiment will have the following format: `node<number>.<user>-<experiment>.<project>.apt.emulab.net`. The `<user>, <experiment> and <project>` will be required for changing scripts to execute this evaluation. Please keep them handy. For example, our values for those variables were: `<user>: saukad, <experiment>: qv79471, <project>: redundancy-pg0`.
 4. Change `./hadoop-common-project/hadoop-common/src/main/conf/core-site.xml` and replace `hdfs://node0.saukad-qv79471.redundancy-pg0.apt.emulab.net:9000` with your experiment details in the following format: `hdfs://node0.<user>-<experiment>.<project>.apt.emulab.net:9000`
 5. Change `./hadoop-hdfs-project/hadoop-hdfs/src/main/conf/hdfs-site.xml` and replace `hdfs://node0.saukad-qv79471.redundancy-pg0.apt.emulab.net:9000` with your experiment details in the following format: `hdfs://node0.<user>-<experiment>.<project>.apt.emulab.net:9000`
