@@ -22,16 +22,18 @@ There are several steps involved in setting up the HDFS cluster to evaluate our 
 4. Change `./hadoop-common-project/hadoop-common/src/main/conf/core-site.xml` and replace `hdfs://node0.saukad-qv79471.redundancy-pg0.apt.emulab.net:9000` with your experiment details in the following format: `hdfs://node0.<user>-<experiment>.<project>.apt.emulab.net:9000`
 5. Change `./hadoop-hdfs-project/hadoop-hdfs/src/main/conf/hdfs-site.xml` and replace `hdfs://node0.saukad-qv79471.redundancy-pg0.apt.emulab.net:9000` with your experiment details in the following format: `hdfs://node0.<user>-<experiment>.<project>.apt.emulab.net:9000`
 6. Change `./hadoop-env.sh` and modify the first line from `USER=saukad` to your `<user>`
-7. Execute `bash build-hadoop.sh`
-8. Execute `bash copy-script.sh <user> <experiment> <project>`
-9. Execute `bash setup-other-nodes.sh <user> <experiment> <project>`
-10. Execute `bash hadoop-setup.sh <user> <experiment> <project>`
+7. Set `ssh` as the PDSH default command. `sudo su` and then `echo "ssh" > /etc/pdsh/rcmd_default` followed by `exit`.
+8. Execute `bash build-hadoop.sh`
+9. Execute `bash copy-script.sh <user> <experiment> <project>`
+10. Execute `bash setup-other-nodes.sh <user> <experiment> <project>`
+11. Execute `bash copy-hdfs.sh <user> <experiment> <project>`
+12. Execute `bash hadoop-setup.sh <user> <experiment> <project>`
 
 
 ## Checking if the HDFS cluster is setup correctly
 At this point the HDFS cluster should be setup on node0 through node20. node0 is the Namenode and node1 through node20 are the 20 Datanodes in this cluster. To check if the HDFS cluster is setup correctly, you can run the following command on the namenode:
 
-`./hadoop-dist/target/hadoop-3.2.0/bin/hdfs dfsadmin -report | grep "Live datanodes"`
+`/tmp/hadoop-3.2.0/bin/hdfs dfsadmin -report | grep "Live datanodes"`
 
 If the cluster is setup correctly, you should see the output as `Live datanodes (20):`
 
