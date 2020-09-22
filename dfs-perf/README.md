@@ -23,9 +23,9 @@ dfs-perf is *not* running on the same nodes as the HDFS cluster. So, assuming th
 11. Execute `mvn install` to install dfs-perf
 12. Execute `bash create-slaves.sh` to create the dfs-perf slaves required when running dfs-perf.
 13. Change `conf/dfs-perf.env` and change the following to appropriate values:
-    - USER=saukad
-    - EXP=qv79471
-    - PROJ=redundancy-pg0
+    - `USER=<user>`
+    - `EXP=<experiment>`
+    - `PROJ=<project>`
     
     
 ## Running dfs-perf to fill the cluster
