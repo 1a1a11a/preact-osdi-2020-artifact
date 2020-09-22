@@ -9,8 +9,8 @@ There are two parts to running dfs-perf:
 
 
 ## Setting up dfs-perf
-dfs-perf is *not* running on the same nodes as the HDFS cluster. So, assuming the HDFS setup guide has been followed correctly the HDFS cluster should be running on node0 through node21. Therefore, the dfs-perf workload generators will run on node22 through node41.
-1. ssh into node22 of the instantiated experiment in Cloudlab
+dfs-perf is *not* running on the same nodes as the HDFS cluster. So, assuming the HDFS setup guide has been followed correctly the HDFS cluster should be running on node0 through node21. Therefore, the dfs-perf workload generators will run on node21 through node41.
+1. ssh into node21 of the instantiated experiment in Cloudlab
 2. Clone the repository into a directory of your choice. `cd` to the cloned repository.
 3. `cd dfs-perf`
 4. First backup your ssh config if it exists (it should be in `~/.ssh/config`). Copy our ssh config to your ssh profile: `cp ssh_config ~/.ssh/config`
