@@ -7,7 +7,7 @@ import json
 import os
 import subprocess
 
-BASE_DIR = os.getcwd() + "/hadoop-dist/target/hadoop-3.2.0"
+BASE_DIR = "/tmp/hadoop-3.2.0"
 
 # Read in the no.of nodes in the cluster
 NUM_NODES = 0

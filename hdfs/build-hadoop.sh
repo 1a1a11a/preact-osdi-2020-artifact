@@ -49,7 +49,9 @@ mvn package -Pdist,native -DskipTests -Dtar -Dmaven.javadoc.skip=true \
     -Drequire.snappy -Dsnappy.lib=/usr/lib/x86_64-linux-gnu/ -Dbundle.snappy \
     -Drequire.openssl -Dopenssl.lib=/usr/lib/x86_64-linux-gnu/ -Dbundle.openssl
 
+cp -R hadoop-dist/target/hadoop-3.2.0 /tmp/
+
 # check native code support
-cd hadoop-dist/target/hadoop-3.2.0/ \
+cd /tmp/hadoop-3.2.0/ \
   && bin/hadoop checknative
 
