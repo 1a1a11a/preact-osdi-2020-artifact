@@ -18,20 +18,22 @@ Once the experiment has been instantiated, you can login into node0 and clone th
 There are several steps involved in setting up the HDFS cluster to evaluate our experiment.
 1. `cd hdfs` in our current repository
 2. First backup your ssh config if it exists (it should be in ~/.ssh/config). Copy our ssh config to your ssh profile: `cp ssh_config ~/.ssh/config`
-3. You will need to change a few files to reflect the parameters based on the experiment that was launched. Each node launched in the Cloudlab experiment will have the following format: `node<number>.<user>-<experiment>.<project>.apt.emulab.net`. The `<user>, <experiment> and <project>` will be required for changing scripts to execute this evaluation. Please keep them handy. For example, our values for those variables were: `<user>: saukad, <experiment>: qv79471, <project>: redundancy-pg0`.
-4. Change `./hadoop-common-project/hadoop-common/src/main/conf/core-site.xml` and replace `hdfs://node0.saukad-qv79471.redundancy-pg0.apt.emulab.net:9000` with your experiment details in the following format: `hdfs://node0.<user>-<experiment>.<project>.apt.emulab.net:9000`
-5. Change `./hadoop-hdfs-project/hadoop-hdfs/src/main/conf/hdfs-site.xml` and replace `hdfs://node0.saukad-qv79471.redundancy-pg0.apt.emulab.net:9000` with your experiment details in the following format: `hdfs://node0.<user>-<experiment>.<project>.apt.emulab.net:9000`
-6. Change `./hadoop-env.sh` and modify the first line from `USER=saukad` to your `<user>`
-7. Execute `bash build-hadoop.sh`
-8. Execute `bash copy-script.sh <user> <experiment> <project>`
-9. Execute `bash setup-other-nodes.sh <user> <experiment> <project>`
-10. Execute `bash hadoop-setup.sh <user> <experiment> <project>`
+3. You will require the private key (of the public key you used to ssh into the Cloudlab machine -- usually is the `~/.ssh/id_rsa` file on your local computer on Linux and Mac platforms) to be copied to `~/.ssh/` path of `node0`.
+4. You will need to change a few files to reflect the parameters based on the experiment that was launched. Each node launched in the Cloudlab experiment will have the following format: `node<number>.<user>-<experiment>.<project>.apt.emulab.net`. The `<user>, <experiment> and <project>` will be required for changing scripts to execute this evaluation. Please keep them handy. For example, our values for those variables were: `<user>: saukad, <experiment>: qv79471, <project>: redundancy-pg0`.
+5. Change `./hadoop-common-project/hadoop-common/src/main/conf/core-site.xml` and replace `hdfs://node0.saukad-qv79471.redundancy-pg0.apt.emulab.net:9000` with your experiment details in the following format: `hdfs://node0.<user>-<experiment>.<project>.apt.emulab.net:9000`
+6. Change `./hadoop-hdfs-project/hadoop-hdfs/src/main/conf/hdfs-site.xml` and replace `hdfs://node0.saukad-qv79471.redundancy-pg0.apt.emulab.net:9000` with your experiment details in the following format: `hdfs://node0.<user>-<experiment>.<project>.apt.emulab.net:9000`
+7. Set `ssh` as the PDSH default command. `sudo su` and then `echo "ssh" > /etc/pdsh/rcmd_default` followed by `exit`.
+8. Execute `bash build-hadoop.sh`
+9. Execute `bash copy-script.sh <user> <experiment> <project>`
+10. Execute `bash setup-other-nodes.sh <user> <experiment> <project>`
+11. Execute `bash copy-hdfs.sh <user> <experiment> <project>`
+12. Execute `bash hadoop-setup.sh <user> <experiment> <project>`
 
 
 ## Checking if the HDFS cluster is setup correctly
 At this point the HDFS cluster should be setup on node0 through node20. node0 is the Namenode and node1 through node20 are the 20 Datanodes in this cluster. To check if the HDFS cluster is setup correctly, you can run the following command on the namenode:
 
-`./hadoop-dist/target/hadoop-3.2.0/bin/hdfs dfsadmin -report | grep "Live datanodes"`
+`/tmp/hadoop-3.2.0/bin/hdfs dfsadmin -report | grep "Live datanodes"`
 
 If the cluster is setup correctly, you should see the output as `Live datanodes (20):`
 
