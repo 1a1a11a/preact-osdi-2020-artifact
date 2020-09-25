@@ -14,7 +14,7 @@ import getpass
 from monitor import monitor_decommissioned
 
 
-BASE_DIR = os.getcwd() + "/hadoop-dist/target/hadoop-3.2.0"
+BASE_DIR = "/tmp/hadoop-3.2.0"
 HDFS_PATH = os.path.join(BASE_DIR, "bin/hdfs")
 
 
@@ -150,7 +150,7 @@ def migrate_node(hostname, old_disk_group, new_disk_group):
 
 
 if __name__ == "__main__":
-    migration_list = [("apt187.apt.emulab.net", "RS-LEGACY-6-3-1024k",
+    migration_list = [("apt002.apt.emulab.net", "RS-LEGACY-6-3-1024k",
                        "RS-LEGACY-7-3-1024k")]
 
     decommission_list = [(hostname, old_dg) for hostname, old_dg, new_dg
