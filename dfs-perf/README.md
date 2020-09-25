@@ -13,19 +13,21 @@ dfs-perf is *not* running on the same nodes as the HDFS cluster. So, assuming th
 1. ssh into node21 of the instantiated experiment in Cloudlab
 2. Clone the repository into a directory of your choice. `cd` to the cloned repository.
 3. `cd dfs-perf`
-4. First backup your ssh config if it exists (it should be in `~/.ssh/config`). Copy our ssh config to your ssh profile: `cp ssh_config ~/.ssh/config`
+4. First backup your ssh config if it exists (it should be in `~/.ssh/config`). Copy our ssh config to your ssh profile: `cp ../hdfs/ssh_config ~/.ssh/config`
 5. You will require the private key (of the public key you used to ssh into the Cloudlab machine -- usually is the `~/.ssh/id_rsa` file on your local computer on Linux and Mac platforms) to be copied to `~/.ssh/` path of `node21`.
 6. Set `ssh` as the PDSH default command. `sudo su` and then `echo "ssh" > /etc/pdsh/rcmd_default` followed by `exit`.
 7. Execute `bash node-setup.sh` to install dependencies on the dfs master node.
-8. Execute `bash copy-script.sh` to copy the dependeny install scripts to all the dfs-perf workers.
+8. Execute `bash copy-script.sh <user> <experiment> <project>` to copy the dependeny install scripts to all the dfs-perf workers.
 9. The `<user>, <experiment> and <project>` will be required for changing scripts to execute this evaluation. Please keep them handy. For example, our values for those variables were: `<user>: saukad, <experiment>: qv79471, <project>: redundancy-pg0`
 10. Execute `pdsh -w node[22-41].<user>-<experiment>.<project>.apt.emulab.net bash ~/node-setup.sh` to install the dependencies on the dfs-perf workers.
 11. Execute `mvn install` to install dfs-perf
-12. Execute `bash create-slaves.sh` to create the dfs-perf slaves required when running dfs-perf.
+12. Execute `bash create-slaves.sh <user> <experiment> <project>` to create the dfs-perf slaves required when running dfs-perf.
 13. Change `conf/dfs-perf.env` and change the following to appropriate values:
     - `USER=<user>`
     - `EXP=<experiment>`
     - `PROJ=<project>`
+14. Execute `pdsh -w node[22-41].<user>-<experiment>.<project>.apt.emulab.net mkdir -p ~/preact-osdi-2020-artifact` to create the directory in all dfs-perf workers.
+15. Execute `bash copy-dfs-perf.sh <user> <experiment> <project>` to copy the built dfs-perf with its configurations to all dfs-perf workers.
     
     
 ## Running dfs-perf to fill the cluster
