@@ -17,7 +17,6 @@ sudo apt-get -y install libsnappy-dev
 sudo apt-get -y install python3 python3-pip
 pip3 install matplotlib numpy pandas
 
-sudo echo "ssh" > /etc/pdsh/rcmd_default
 
 # install isa-l
 sudo apt-get -y install nasm \
