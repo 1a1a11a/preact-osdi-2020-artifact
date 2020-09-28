@@ -14,25 +14,22 @@ echo '############ setup config #############'
 cp ../hdfs/ssh_config ~/.ssh/config
 echo "ssh" | sudo tee /etc/pdsh/rcmd_default >/dev/null
 
-# echo '############ updating core-site.xml #############' 
-# sed -i "s/saukad-qv79471.redundancy-pg0/${user}-${exp}.${proj}/g" hadoop-common-project/hadoop-common/src/main/conf/core-site.xml 
-
-# echo '############ updating hdfs-site.xml #############' 
-# sed -i "s/saukad-qv79471.redundancy-pg0/${user}-${exp}.${proj}/g" hadoop-hdfs-project/hadoop-hdfs/src/main/conf/hdfs-site.xml 
-
 echo '############ node setup #############' 
 bash node-setup.sh
 
 echo '############ copy script #############' 
+# sed -i 's/{22..41}/{1..20}/g' copy-script.sh
 bash copy-script.sh ${user} ${exp} ${proj}
 
 echo '############ setup other nodes #############' 
 pdsh -w node[22-41].${user}-${exp}.${proj}.apt.emulab.net bash ~/node-setup.sh
+# pdsh -w node[1-20].${user}-${exp}.${proj}.apt.emulab.net bash ~/node-setup.sh
 
 echo '############ install dfs #############' 
 mvn install
 
 echo '############ create s***** #############' 
+# sed -i 's/{22..41}/{1..20}/g' create-slaves.sh
 bash create-slaves.sh ${user} ${exp} ${proj}
 
 echo '########### update config ############'
@@ -42,9 +39,14 @@ sed -i "s/PROJ=redundancy-pg0/PROJ=${proj}/g" conf/dfs-perf-env.sh
 
 echo '############ hadoop setup #############' 
 bash pdsh -w node[22-41].${user}-${exp}.${proj}.apt.emulab.net mkdir -p ~/preact-osdi-2020-artifact
+# bash pdsh -w node[1-20].${user}-${exp}.${proj}.apt.emulab.net mkdir -p ~/preact-osdi-2020-artifact
 
 echo '############ copy dfs #############' 
-bash copy-dfs-perf.sh ${user} ${exp} ${proj}
+# sed -i 's/{22..41}/{1..20}/g' copy-dfs-perf.sh
+# bash copy-dfs-perf.sh ${user} ${exp} ${proj}
+
+
+# sed -i 's/node21/node0/g' conf/dfs-perf-env.sh
 
 echo '############ clean  #############' 
 # Should output: `Clean the workspace /tmp/dfs-perf-works
