@@ -11,7 +11,7 @@ source params.sh
 echo user ${user} experiemnt ${exp} ${proj}
 
 echo '############ setup config #############' 
-cp ssh_config ~/.ssh/config
+cp ../hdfs/ssh_config ~/.ssh/config
 echo "ssh" | sudo tee /etc/pdsh/rcmd_default >/dev/null
 
 # echo '############ updating core-site.xml #############' 
@@ -27,21 +27,18 @@ echo '############ copy script #############'
 bash copy-script.sh ${user} ${exp} ${proj}
 
 echo '############ setup other nodes #############' 
-pdsh -w node[22-41].${user}-${experiment}.${project}.apt.emulab.net bash ~/node-setup.sh
+pdsh -w node[22-41].${user}-${exp}.${proj}.apt.emulab.net bash ~/node-setup.sh
 
 echo '############ install dfs #############' 
 mvn install
+
+echo '############ create s***** #############' 
+bash create-slaves.sh ${user} ${exp} ${proj}
 
 echo '########### update config ############'
 sed -i "s/USER=saukad/USER=${user}/g" conf/dfs-perf-env.sh
 sed -i "s/EXP=qv79471/EXP=${exp}/g" conf/dfs-perf-env.sh
 sed -i "s/PROJ=redundancy-pg0/PROJ=${proj}/g" conf/dfs-perf-env.sh
-
-echo '############ create s***** #############' 
-bash create-slaves.sh ${user} ${exp} ${proj}
-
-echo '############ hadoop setup #############' 
-bash hadoop-setup.sh ${user} ${exp} ${proj}
 
 echo '############ hadoop setup #############' 
 bash pdsh -w node[22-41].${user}-${exp}.${proj}.apt.emulab.net mkdir -p ~/preact-osdi-2020-artifact
